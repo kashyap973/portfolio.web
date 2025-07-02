@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kashyap Raj Gupta | Graphic Designer</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+    body {
+      background-color: #f4f1ea;
+      color: #3e3e3e;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    nav.topbar {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 8px 15px;
+      border-bottom: 3px solid #d9c1a3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #3e3e3e;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 101;
+      background-color: rgba(214, 189, 151, 0.85);
+      color: #3e3e3e;
+      padding: 3px 8px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .hamburger::after {
+      content: '☰';
+    }
+    .hamburger.close-icon::after {
+      content: '✖';
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu a {
+      color: #3e3e3e;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #a68a64;
+      transition: 0.3s;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        order: -1;
+      }
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -270px;
+        width: 250px;
+        height: 100vh;
+        background-color: #ffffff;
+        border-right: 2px solid #d9c1a3;
+        padding: 60px 20px 20px;
+        gap: 15px;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        transition: left 0.4s ease;
+        z-index: 999;
+        text-align: left;
+        overflow-y: auto;
+      }
+      .menu.show {
+        left: 0;
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+      .menu-extra {
+        font-size: 0.9rem;
+        color: #8a775e;
+        margin-top: 12px;
+        border-top: 1px dashed #d9c1a3;
+        padding-top: 12px;
+        line-height: 1.6;
+        display: block;
+      }
+      .menu img {
+        width: 100%;
+        margin-top: 12px;
+        border-radius: 10px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .menu-extra, .menu img {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      const hamburger = document.getElementById('hamburgerBtn');
+      const body = document.body;
+
+      const isOpen = menu.classList.toggle('show');
+      hamburger.classList.toggle('close-icon', isOpen);
+
+      if (isOpen) {
+        body.classList.add('menu-open');
+      } else {
+        body.classList.remove('menu-open');
+      }
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('navMenu');
+      const hamburger = document.getElementById('hamburgerBtn');
+      const body = document.body;
+
+      menu.classList.remove('show');
+      hamburger.classList.remove('close-icon');
+      body.classList.remove('menu-open');
+    }
+  </script>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()"></div>
+    <div class="logo">Welcome to My Creative Space</div>
+    <div class="menu" id="navMenu">
+      <a href="#about" onclick="closeMenu()">About Me</a>
+      <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <div class="menu-extra">
+        ✨ Premium Design Packages<br/>
+        🚀 Fast Turnaround & Quality<br/>
+        🎨 Custom Aesthetic Solutions<br/>
+        💬 DM me for quotes & collabs!
+      </div>
+      <img src="images/sample-2.jpg" alt="Promo Image">
+    </div>
+  </nav>
+</body>
+</html>

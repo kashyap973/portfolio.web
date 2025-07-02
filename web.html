@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kashyap Raj Gupta | Graphic Designer</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+    body {
+      background-color: #f4f1ea;
+      color: #3e3e3e;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body.noscroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    nav.topbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      padding: 10px 20px;
+      border-bottom: 3px solid #d9c1a3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #3e3e3e;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 201;
+      background-color: rgba(214, 189, 151, 0.85);
+      color: #3e3e3e;
+      padding: 2px 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu a {
+      color: #3e3e3e;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .menu a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #a68a64;
+      transition: 0.3s;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        order: -1;
+      }
+
+      .menu {
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: -270px;
+        width: 250px;
+        height: 100vh;
+        background-color: #ffffff;
+        border-right: 2px solid #d9c1a3;
+        padding: 80px 20px 20px;
+        gap: 15px;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        transition: left 0.4s ease;
+        z-index: 100;
+        text-align: left;
+        overflow-y: auto;
+      }
+
+      .menu.show {
+        left: 0;
+      }
+
+      .menu-extra {
+        font-size: 0.9rem;
+        color: #8a775e;
+        margin-top: 12px;
+        border-top: 1px dashed #d9c1a3;
+        padding-top: 12px;
+        line-height: 1.6;
+        display: block;
+      }
+
+      .menu-extra img {
+        margin-top: 12px;
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid #d9c1a3;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .menu-extra {
+        display: none;
+      }
+    }
+
+    header {
+      background-color: #f4f1ea;
+      color: #3e3e3e;
+      padding: 100px 20px 10px; /* Adjusted for fixed topbar */
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-style: italic;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: #6e5842;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 850px;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .about .about-image {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .about .about-image img {
+      width: 280px;
+      height: auto;
+      border-radius: 16px;
+      border: 4px solid #d9c1a3;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .portfolio-grid img {
+      width: 280px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 3px solid #d9c1a3;
+      margin: auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .service {
+      background: #fff;
+      border-radius: 16px;
+      border: 2px solid #d9c1a3;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .service:hover {
+      background: #f4f1ea;
+      transform: translateY(-5px);
+    }
+
+    .service h3 {
+      margin-bottom: 12px;
+      color: #a68a64;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .contact input, .contact textarea {
+      padding: 14px;
+      border: 1px solid #c7b299;
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: #fff;
+    }
+
+    .contact button {
+      background-color: #a68a64;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact button:hover {
+      background-color: #6e5842;
+    }
+
+    #confirmationMessage {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #6e5842;
+      color: white;
+      margin-top: 60px;
+      border-top: 3px solid #a68a64;
+    }
+  </style>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      const isOpen = menu.classList.toggle('show');
+      document.body.classList.toggle('noscroll', isOpen);
+    }
+
+    function closeMenu() {
+      document.getElementById('navMenu').classList.remove('show');
+      document.body.classList.remove('noscroll');
+    }
+  </script>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="logo">Welcome to My Creative Space</div>
+    <div class="menu" id="navMenu">
+      <a href="#about" onclick="closeMenu()">About Me</a>
+      <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <div class="menu-extra">
+        ✨ Premium Design Packages<br/>
+        🚀 Fast Turnaround & Quality<br/>
+        🎨 Custom Aesthetic Solutions<br/>
+        💬 DM me for quotes & collabs!
+        <img src="images/welcome.png" alt="Promo Image" />
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Kashyap Raj Gupta</h1>
+    <p>Creative Graphic Designer</p>
+  </header>
+
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>Hello Everyone I am Kashyap Raj Gupta and this is a small website I have created 
+    for my portfolio and for people to contact me for any kind of designing work 
+    all my works are attached below you may check them!! 
+    Thank You!</p>
+    <div class="about-image">
+      <img src="images/user.png" alt="Designer Photo">
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio">
+    <h2 class="section-title">My Work</h2>
+    <div class="portfolio-grid">
+      <a href="https://drive.google.com/file/d/1vaX-oWPQFX7lEJm6y7JHnUQXET9WQW3d/view" target="_blank">
+        <img src="images/issue1-2024.png" alt="Work Sample 1">
+      </a>
+      <a href="https://drive.google.com/file/d/1vaX-oWPQFX7lEJm6y7JHnUQXET9WQW3d/view" target="_blank">
+        <img src="images/sample-2.jpg" alt="Work Sample 2">
+      </a>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2 class="section-title">Services</h2>
+    <div class="services-list">
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Logo Design</h3>
+        <p>Classic logos crafted with elegance and brand authenticity.</p>
+      </div>
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Social Media Posts</h3>
+        <p>Stylized, vintage-toned graphics for your social presence.</p>
+      </div>
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Flyers & Posters</h3>
+        <p>Retro-inspired layouts for events and promotions.</p>
+      </div>
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Business Cards</h3>
+        <p>Professional cards with heritage appeal and style.</p>
+      </div>
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Infographics</h3>
+        <p>Beautiful, easy-to-read visuals with a timeless look.</p>
+      </div>
+      <div class="service" onclick="location.href='#contact'">
+        <h3>Brochures</h3>
+        <p>Classic print materials designed for maximum charm.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <form onsubmit="event.preventDefault(); showConfirmation();">
+      <input type="text" name="Name" placeholder="Your Name" required />
+      <input type="email" name="Email" placeholder="Your Email" required />
+      <textarea rows="5" name="message" placeholder="Your Message / Order Details" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="confirmationMessage">You will be contacted soon by Kashyap. Thank you for reaching out!</div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kashyap Raj Gupta. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('show');
+      document.body.classList.toggle('noscroll');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.remove('show');
+      document.body.classList.remove('noscroll');
+    }
+  </script>
+</body>
+</html>
