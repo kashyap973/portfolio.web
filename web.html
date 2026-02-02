@@ -289,19 +289,6 @@
       border-top: 3px solid #a68a64;
     }
   </style>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('navMenu');
-      const isOpen = menu.classList.toggle('show');
-      document.body.classList.toggle('noscroll', isOpen);
-    }
-
-    function closeMenu() {
-      document.getElementById('navMenu').classList.remove('show');
-      document.body.classList.remove('noscroll');
-    }
-  </script>
 </head>
 <body>
   <nav class="topbar">
@@ -316,7 +303,7 @@
         ✨ Premium Design Packages<br/>
         🚀 Fast Turnaround & Quality<br/>
         🎨 Custom Aesthetic Solutions<br/>
-        💬 DM me for quotes & collabs!
+        💬 Contact me for quotes & collabs!
         <img src="images/welcome.png" alt="Promo Image" />
       </div>
     </div>
@@ -344,11 +331,32 @@
       <a href="https://drive.google.com/file/d/1vaX-oWPQFX7lEJm6y7JHnUQXET9WQW3d/view" target="_blank">
         <img src="images/issue1-2024.png" alt="Work Sample 1">
       </a>
-      <a href="https://drive.google.com/file/d/1vaX-oWPQFX7lEJm6y7JHnUQXET9WQW3d/view" target="_blank">
+      <a href="https://www.npalumni.org/newsletter/" target="_blank">
         <img src="images/sample-2.jpg" alt="Work Sample 2">
+      </a>
+      <a href="https://drive.google.com/file/d/1rZ69ljbnxS_bZ8-G8J0k4WSKc719Ggnh/view?usp=sharing" target="_blank">
+        <img src="images/Cover Page.jpg" alt="Work Sample 3">
       </a>
     </div>
   </section>
+
+  <section id="uiux" class="uiux">
+  <h2 class="section-title">UI / UX Designs</h2>
+  <p style="text-align:center; max-width: 800px; margin: 0 auto 30px;">
+    Here are some of my UI/UX design works focusing on clean layouts, and usability.
+  </p>
+
+  <div class="portfolio-grid">
+    <a href="https://www.figma.com/proto/kjCZlpEO97cTblQZmFcgUm?node-id=1-2" target="_blank">
+      <img src="images/uiux.jpeg" alt="UI/UX Design Sample">
+    </a>
+    <a href="https://www.figma.com/proto/2FiSBEFczP7PQnhNq78GoE?node-id=5-39" target="_blank">
+      <img src="images/uiux2.jpeg" alt="UI/UX Design Sample">
+    </a>
+  </div>
+</section>
+  </div>
+</section>
 
   <section id="services" class="services">
     <h2 class="section-title">Services</h2>
@@ -385,7 +393,7 @@
     <form onsubmit="event.preventDefault(); showConfirmation();">
       <input type="text" name="Name" placeholder="Your Name" required />
       <input type="email" name="Email" placeholder="Your Email" required />
-      <textarea rows="5" name="message" placeholder="Your Message / Order Details" required></textarea>
+      <textarea rows="5" name="Message" placeholder="Your Message / Order Details" required></textarea>
       <button type="submit">Send Message</button>
     </form>
     <div id="confirmationMessage">You will be contacted soon by Kashyap. Thank you for reaching out!</div>
@@ -395,17 +403,25 @@
     <p>&copy; 2025 Kashyap Raj Gupta. All Rights Reserved.</p>
   </footer>
 
+  <!-- SweetAlert CDN -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById('navMenu');
-      menu.classList.toggle('show');
-      document.body.classList.toggle('noscroll');
+      const isOpen = menu.classList.toggle('show');
+      document.body.classList.toggle('noscroll', isOpen);
     }
 
     function closeMenu() {
       const menu = document.getElementById('navMenu');
       menu.classList.remove('show');
       document.body.classList.remove('noscroll');
+    }
+
+    function showConfirmation() {
+      document.getElementById("confirmationMessage").style.display = "block";
+      swal("Thank you for contacting!", "I will reach out to you soon.", "success");
     }
   </script>
 </body>
